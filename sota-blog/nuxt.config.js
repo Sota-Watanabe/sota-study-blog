@@ -1,6 +1,6 @@
 export default {
   //srcフォルダを変更
-  srcDir: ['client/'],
+  srcDir: 'client/',
 
   //serverMiddleWare追加
   serverMiddleware: ['~~/server'], //後で調べる
