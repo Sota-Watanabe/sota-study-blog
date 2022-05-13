@@ -1,8 +1,6 @@
 <template>
-  <body>
-    <header>
-      <h1>COMPANY LOGO</h1>
-    </header>
+  <div>
+    <my-header />
     <h2>BLOG</h2>
     <section class="container">
       <article class="grid-item">
@@ -82,13 +80,14 @@
       </nav>
       <p>© Copyright</p>
     </footer>
-  </body>
+  </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
-
+import MyHeader from '../components/MyHeader.vue'
 export default Vue.extend({
   name: "IndexPage",
+  components: { MyHeader },
 });
 </script>
