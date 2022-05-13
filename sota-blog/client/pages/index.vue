@@ -3,7 +3,8 @@
     <my-header />
     <h2>BLOG</h2>
     <section class="container">
-      <article class="grid-item">
+      <article-card />
+      <!-- <article class="grid-item">
         <img src="blog-image.png" alt="記事の画像" title="記事の画像" />
         <div class="detail-text">
           <time>2022-04-04</time>
@@ -65,7 +66,7 @@
           <time>2022-04-04</time>
           <h3>ブログタイトルブログタイトルブログタイトルブログタイトル</h3>
         </div>
-      </article>
+      </article> -->
     </section>
     <nav>
       <ol>
@@ -86,8 +87,9 @@
 <script lang="ts">
 import Vue from "vue";
 import MyHeader from '../components/MyHeader.vue'
+import ArticleCard from '../components/ArticleCard.vue'
 export default Vue.extend({
   name: "IndexPage",
-  components: { MyHeader },
+  components: { MyHeader, ArticleCard },
 });
 </script>
