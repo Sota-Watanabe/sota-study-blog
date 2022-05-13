@@ -1,0 +1,15 @@
+{
+  "name": "local-db",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "db-migrate": "^0.11.13",
+    "db-migrate-mysql": "^2.2.0"
+  },
+  "scripts": {
+    "cf": "db-migrate create",
+    "up": "db-migrate up -e dev",
+    "reset": "db-migrate reset -e dev"
+  }
+}

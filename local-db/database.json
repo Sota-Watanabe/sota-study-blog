@@ -1,0 +1,12 @@
+{
+  "dev": {
+    "host": "127.0.0.1",
+    "port": "9306",
+    "user": "db_user",
+    "password": "db_password",
+    "database": "blog",
+    "driver": "mysql",
+    "multipleStatements": true
+  },
+  "sql-file": "true"
+}

@@ -1,0 +1,22 @@
+version: "3.1"
+services:
+  db:
+    image: mysql:8.0
+    command: --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_bin -P 9306
+    # command: dockerfileで言うCMD。コンテナ実行時のデフォルト処理を記す。
+    # --default-authentication-plugin=mysql_native_password: mysql8.0以降はデフォルトの認証プラグインが変わるので明治的に指定している
+    # --character-set-server=utf8mb4 --collation-server=utf8mb4_bin: 文字セットをutf8mb4にする
+    #  -P 9306: mysqlをサービルを起動し、待ち受けるポートをしている
+    environment:
+      TZ: "Asia/Tokyo"
+      COMPOSE_PROJECT_NAME: blog
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_USER: db_user
+      MYSQL_PASSWORD: db_password
+      MYSQL_DATABASE: blog
+    cap_add:
+      - SYS_NICE
+    # コンテナにおけるプロセスのnice値の加算などの設定を行えるようにする。これがないと`Operation not permitted`エラーが出てしまう。
+    ports:
+      - "9306:9306"
+    # 指定したポートにポートフォワーディングする
