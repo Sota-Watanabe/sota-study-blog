@@ -27,12 +27,14 @@
   </div>
 </template>
 
-<style>
+<style scoped>
 .main {
   max-width: 1084px;
   margin: 0 auto;
 }
 .container {
+  display: flex;
+  margin: 0 auto;
   flex-wrap: wrap;
   justify-content: center;
   gap: 40px 32px;

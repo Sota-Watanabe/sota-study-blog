@@ -15,7 +15,7 @@
   </article>
 </template>
 
-<style>
+<style scoped>
 .base {
   max-width: 340px;
   height: 326px;
