@@ -17,11 +17,9 @@
 
 <style>
 .base {
-  width: 340px;
+  max-width: 340px;
   height: 326px;
-}
-.blog-image {
-  width: 340px;
+  justify-content: center;
 }
 .blog-time {
   font-family: "Abel";
