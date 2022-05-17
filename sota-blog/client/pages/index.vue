@@ -3,70 +3,11 @@
     <my-header />
     <h2>BLOG</h2>
     <section class="container">
-      <article-card />
-      <!-- <article class="grid-item">
-        <img src="blog-image.png" alt="記事の画像" title="記事の画像" />
-        <div class="detail-text">
-          <time>2022-04-04</time>
-          <h3>ブログタイトルブログタイトルブログタイトルブログタイトル</h3>
-        </div>
-      </article>
-      <article class="grid-item">
-        <img src="blog-image.png" alt="記事の画像" title="記事の画像" />
-        <div class="detail-text">
-          <time>2022-04-04</time>
-          <h3>ブログタイトルブログタイトルブログタイトルブログタイトル</h3>
-        </div>
-      </article>
-      <article class="grid-item">
-        <img src="blog-image.png" alt="記事の画像" title="記事の画像" />
-        <div class="detail-text">
-          <time>2022-04-04</time>
-          <h3>ブログタイトルブログタイトルブログタイトルブログタイトル</h3>
-        </div>
-      </article>
-      <article class="grid-item">
-        <img src="blog-image.png" alt="記事の画像" title="記事の画像" />
-        <div class="detail-text">
-          <time>2022-04-04</time>
-          <h3>ブログタイトルブログタイトルブログタイトルブログタイトル</h3>
-        </div>
-      </article>
-      <article class="grid-item">
-        <img src="blog-image.png" alt="記事の画像" title="記事の画像" />
-        <div class="detail-text">
-          <time>2022-04-04</time>
-          <h3>ブログタイトルブログタイトルブログタイトルブログタイトル</h3>
-        </div>
-      </article>
-      <article class="grid-item">
-        <img src="blog-image.png" alt="記事の画像" title="記事の画像" />
-        <div class="detail-text">
-          <time>2022-04-04</time>
-          <h3>ブログタイトルブログタイトルブログタイトルブログタイトル</h3>
-        </div>
-      </article>
-      <article class="grid-item">
-        <img src="blog-image.png" alt="記事の画像" title="記事の画像" />
-        <div class="detail-text">
-          <time>2022-04-04</time>
-          <h3>ブログタイトルブログタイトルブログタイトルブログタイトル</h3>
-        </div>
-      </article>
-      <article class="grid-item">
-        <img src="blog-image.png" alt="記事の画像" title="記事の画像" />
-        <div class="detail-text">
-          <time>2022-04-04</time>
-          <h3>ブログタイトルブログタイトルブログタイトルブログタイトル</h3>
-        </div>
-      </article>
-      <article class="grid-item">
-        <img src="blog-image.png" alt="記事の画像" title="記事の画像" />
-        <div class="detail-text">
-          <time>2022-04-04</time>
-          <h3>ブログタイトルブログタイトルブログタイトルブログタイトル</h3>
-        </div>
-      </article> -->
+      <article-card
+        v-for="card of cards"
+        :key="card.number"
+        class="article-card"
+      />
     </section>
     <nav>
       <ol>
@@ -84,12 +25,30 @@
   </div>
 </template>
 
+<style>
+.container {
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1084px;
+  margin: 0 auto;
+  gap: 40px 32px;
+}
+.article-card {
+  min-width: 30%;
+}
+</style>
+
 <script lang="ts">
 import Vue from "vue";
-import MyHeader from '../components/MyHeader.vue'
-import ArticleCard from '../components/ArticleCard.vue'
+import MyHeader from "../components/MyHeader.vue";
+import ArticleCard from "../components/ArticleCard.vue";
 export default Vue.extend({
   name: "IndexPage",
   components: { MyHeader, ArticleCard },
+  data() {
+    return {
+      cards: [1, 2, 3, 4],
+    };
+  },
 });
 </script>
