@@ -7,7 +7,7 @@
       class="blog-image"
     />
     <div class="detail-text">
-      <time class="blog-time">2022-04-04</time>
+      <the-time class="time" />
       <h3 class="blog-detail">
         ブログタイトルブログタイトルブログタイトルブログタイトル
       </h3>
@@ -21,18 +21,7 @@
   height: 326px;
   justify-content: center;
 }
-.blog-time {
-  font-family: "Abel";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 120%;
-  /* or 14px */
 
-  display: flex;
-  align-items: center;
-  letter-spacing: 0.05em;
-}
 .blog-detail {
   font-family: "ABeeZee";
   /* font-style: italic; */
@@ -43,4 +32,14 @@
 
   letter-spacing: 0.03em;
 }
+.time {
+  margin-bottom: 4px;
+}
 </style>
+<script lang="ts">
+import Vue from "vue";
+import TheTime from "../components/TheTime.vue";
+export default Vue.extend({
+  components: { TheTime },
+});
+</script>
