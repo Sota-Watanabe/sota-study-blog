@@ -12,6 +12,7 @@
 .base {
   padding-top: 49px;
   padding-bottom: 48px;
+  margin-left: 12.5%;
 }
 h2 {
   font-size: 22px;

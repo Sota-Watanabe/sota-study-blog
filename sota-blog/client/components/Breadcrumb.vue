@@ -17,6 +17,7 @@
   border-color: #f3f3f4;
   border-left: transparent;
   border-right: transparent;
+  margin-left: 12.5%;
 }
 .home-icon {
   width: 14px;

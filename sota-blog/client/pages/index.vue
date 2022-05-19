@@ -10,9 +10,9 @@
           class="article-card"
         />
       </section>
-      <breadcrumb />
-      <my-footer />
     </div>
+    <breadcrumb />
+    <my-footer />
   </div>
 </template>
 
