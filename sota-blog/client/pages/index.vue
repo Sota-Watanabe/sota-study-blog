@@ -11,14 +11,8 @@
         />
       </section>
       <breadcrumb />
+      <my-footer />
     </div>
-    <footer>
-      <h2>COMPANY LOGO</h2>
-      <nav>
-        <a href="#">BLOG</a>
-      </nav>
-      <p>© Copyright</p>
-    </footer>
   </div>
 </template>
 
@@ -61,9 +55,10 @@ import Vue from "vue";
 import MyHeader from "../components/MyHeader.vue";
 import ArticleCard from "../components/ArticleCard.vue";
 import Breadcrumb from "../components/Breadcrumb.vue";
+import MyFooter from "../components/MyFooter.vue";
 export default Vue.extend({
   name: "IndexPage",
-  components: { MyHeader, ArticleCard, Breadcrumb },
+  components: { MyHeader, ArticleCard, Breadcrumb, MyFooter },
   data() {
     return {
       cards: [1, 2, 3, 4],
