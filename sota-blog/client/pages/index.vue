@@ -10,13 +10,8 @@
           class="article-card"
         />
       </section>
+      <breadcrumb />
     </div>
-    <nav>
-      <ol>
-        <li><a href="#">TOP</a></li>
-        <li><a href="#">BLOG</a></li>
-      </ol>
-    </nav>
     <footer>
       <h2>COMPANY LOGO</h2>
       <nav>
@@ -65,9 +60,10 @@ h1 {
 import Vue from "vue";
 import MyHeader from "../components/MyHeader.vue";
 import ArticleCard from "../components/ArticleCard.vue";
+import Breadcrumb from "../components/Breadcrumb.vue";
 export default Vue.extend({
   name: "IndexPage",
-  components: { MyHeader, ArticleCard },
+  components: { MyHeader, ArticleCard, Breadcrumb },
   data() {
     return {
       cards: [1, 2, 3, 4],
