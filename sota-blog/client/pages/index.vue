@@ -1,13 +1,13 @@
 <template>
   <div>
     <my-header />
-    <div class="main">
-      <h1>BLOG</h1>
-      <section class="container">
+    <div class="m-auto m-w-1084px max-w-6xl">
+      <h1 class="m-10 h1-font tracking-wider">BLOG</h1>
+      <section class="article-sec flex m-auto flex-wrap justify-center  gap-x-10 gap-y-8">
         <article-card
           v-for="card of cards"
           :key="card.number"
-          class="article-card"
+
         />
       </section>
     </div>
@@ -17,36 +17,20 @@
 </template>
 
 <style scoped>
-.main {
-  max-width: 1084px;
-  margin: 0 auto;
-}
-.container {
-  display: flex;
-  margin: 0 auto;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 40px 32px;
-}
-.article-card {
-  min-width: 30%;
-}
-h1 {
-  margin: 40px;
-  width: 125px;
+.h-70px {
   height: 70px;
-
-  font-family: "Abel";
-  font-style: normal;
-  /* font-weight: 400; */
+}
+.m-w-1084px {
+  max-width: 1100px;
+}
+.h1-font {
   font-size: 58px;
-  /* line-height: 1%; */
-  /* identical to box height, or 70px */
-
-  display: flex;
-  align-items: center;
-  text-align: center;
-  letter-spacing: 0.05em;
+  font-family: "Abel";
+}
+.article-sec::after{
+  content:"";
+  display: block;
+  width: 340px;
 }
 </style>
 
@@ -61,7 +45,7 @@ export default Vue.extend({
   components: { MyHeader, ArticleCard, Breadcrumb, MyFooter },
   data() {
     return {
-      cards: [1, 2, 3, 4],
+      cards: [1, 2, 3, 4, 5],
     };
   },
 });
