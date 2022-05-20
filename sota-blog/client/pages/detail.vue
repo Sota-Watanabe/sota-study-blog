@@ -2,7 +2,7 @@
   <div>
     <my-header />
     <div class="px-4">
-      <div class="m-auto mt-[49px] max-w-[800px] flex-col justify-center border-solid border-[#F3F3F4] border-b-[1px]">
+      <div class="m-auto mt-[49px] max-w-[800px] flex-col justify-center border-solid border-[#FFFFFF] border-b-[1px]">
         <the-time class="mb-2"/>
         <h2 class="text-[32px] mb-8">プロダクトにデザインの力を浸透させる方法</h2>
         <img src="~/assets/blog-detail.png" class="blog-detail-img" />
