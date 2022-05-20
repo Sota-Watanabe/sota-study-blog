@@ -1,34 +1,13 @@
 <template>
-  <div class="base mt-[151px] ">
-    <img src="~/assets/home.svg" class="home-icon" />
+  <div class="flex h-[71px] mt-[151px] pl-[12.5%] items-center border-solid border-[1px] ">
+    <img src="~/assets/home.svg" class="w-3.5 h-3 m-2" />
     <a href="#">TOP</a>
-    <img src="~/assets/next-bread.png" class="next-bread" />
+    <img src="~/assets/next-bread.png" class="w-1.5 h-2.5 m-2" />
     <a href="#">BLOG</a>
   </div>
 </template>
 
 <style scoped>
-.base {
-  display: flex;
-  height: 71px;
-  align-items: center;
-  border: solid;
-  border: 1px solid;
-  border-color: #f3f3f4;
-  border-left: transparent;
-  border-right: transparent;
-  margin-left: 12.5%;
-}
-.home-icon {
-  width: 14px;
-  height: 12px;
-  margin: 8px;
-}
-.next-bread {
-  width: 6px;
-  height: 10px;
-  margin: 8px;
-}
 </style>
 
 <script>

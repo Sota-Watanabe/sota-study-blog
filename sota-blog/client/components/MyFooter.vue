@@ -1,7 +1,7 @@
 <template>
-  <div class="base">
-    <h2>COMPANY LOGO</h2>
-    <nav class="nav-links">
+  <div class="pt-[49px] pb-12 pl-[12.5%]">
+    <h2 class="text-[22px] mb-[34px]">COMPANY LOGO</h2>
+    <nav class="mb-[29px]">
       <a href="#">BLOG</a>
     </nav>
     <p>© Copyright</p>
@@ -9,16 +9,4 @@
 </template>
 
 <style scoped>
-.base {
-  padding-top: 49px;
-  padding-bottom: 48px;
-  margin-left: 12.5%;
-}
-h2 {
-  font-size: 22px;
-  margin-bottom: 34px;
-}
-.nav-links {
-  margin-bottom: 29px;
-}
 </style>
