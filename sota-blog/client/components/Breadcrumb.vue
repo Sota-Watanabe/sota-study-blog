@@ -1,5 +1,5 @@
 <template>
-  <div class="base">
+  <div class="base mt-[151px] ">
     <img src="~/assets/home.svg" class="home-icon" />
     <a href="#">TOP</a>
     <img src="~/assets/next-bread.png" class="next-bread" />
