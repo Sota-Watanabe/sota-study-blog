@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "migrate": "sequelize-cli db:migrate",
+    "undo": "sequelize-cli db:migrate:undo",
+    "allundo": "sequelize-cli db:migrate:undo:all"
+  },
   "dependencies": {
     "mysql2": "^2.3.3",
     "sequelize": "^6.19.2",

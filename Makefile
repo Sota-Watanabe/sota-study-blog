@@ -19,16 +19,15 @@ dc/ls: ## DBコンテナの状態を確認
 
 ARG = create-article
 ### DB操作
-db/cf: ## マイグレーションファイル群を作成する
-	cd local-db;\
-	yarn cf ${ARG}
-db/up: ## マイグレーションする (DBに設定を反映)
-	cd local-db;\
-	yarn up
-db/reset: ## 全てのダウンマイグレーションを実行
-	cd local-db;\
-	yarn reset
-
+db/mg: ## マイグレーションする (DBに設定を反映)
+	cd sota-blog/database;\
+	yarn migrate
+db/undo: ## ダウンマイグレーションを実行
+	cd sota-blog/database;\
+	yarn undo
+db/allundo: ## ダウンマイグレーションを実行
+	cd sota-blog/database;\
+	yarn allundo
 ### Nuxt.js操作
 nx/dev:
 	cd sota-blog;\
