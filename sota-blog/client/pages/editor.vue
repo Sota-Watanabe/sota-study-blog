@@ -39,10 +39,9 @@ import MyHeader from "../components/MyHeader.vue";
 import ArticleCard from "../components/ArticleCard.vue";
 import Breadcrumb from "../components/Breadcrumb.vue";
 import MyFooter from "../components/MyFooter.vue";
-import EditHeader from "../components/EditHeader.vue";
 export default Vue.extend({
   name: "IndexPage",
-  components: { MyHeader, ArticleCard, Breadcrumb, MyFooter, EditHeader },
+  components: { MyHeader, ArticleCard, Breadcrumb, MyFooter },
   data() {
     return {
       cards: [1, 2, 3, 4, 5],
