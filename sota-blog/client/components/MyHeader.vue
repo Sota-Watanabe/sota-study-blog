@@ -40,11 +40,6 @@ export default Vue.extend({
   props: ["editMode"],
   data() {
     return {
-      hoge1: {
-        type: Boolean,
-        default: "editMode",
-        required: true,
-      },
     };
   },
   computed: {
