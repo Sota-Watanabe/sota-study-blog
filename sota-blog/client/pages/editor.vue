@@ -1,16 +1,10 @@
 <template>
   <div>
     <my-header :editMode="true"/>
-    <div class="m-auto m-w-1084px max-w-6xl">
-      <h1 class="m-10 h1-font tracking-wider">BLOG</h1>
-      <section class="article-sec flex m-auto flex-wrap justify-center  gap-x-10 gap-y-8">
-        <article-card
-          v-for="card of cards"
-          :key="card.number"
-        />
-      </section>
+    <div class="mx-[3%] mt-[68px]">
+      <article-board :isPublic="true" class="my-[38px]"/>
+      <article-board :isPublic="true" class="my-[38px]"/>
     </div>
-    <breadcrumb />
     <my-footer />
   </div>
 </template>
@@ -39,9 +33,10 @@ import MyHeader from "../components/MyHeader.vue";
 import ArticleCard from "../components/ArticleCard.vue";
 import Breadcrumb from "../components/Breadcrumb.vue";
 import MyFooter from "../components/MyFooter.vue";
+import ArticleBoard from "../components/ArticleBoard.vue";
 export default Vue.extend({
   name: "IndexPage",
-  components: { MyHeader, ArticleCard, Breadcrumb, MyFooter },
+  components: { MyHeader, ArticleCard, MyFooter, ArticleBoard },
   data() {
     return {
       cards: [1, 2, 3, 4, 5],
