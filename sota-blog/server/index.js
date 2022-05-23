@@ -1,8 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import { dbClient } from './clients/dbClient';
 const app = express();
-
+const models = require('../database/models')
 dotenv.config();
 
 //for parsing application/json
@@ -25,52 +24,15 @@ app.post('/api/articles', async (request, response) => {
     response.status(400).send('bad request')
     return
   }
-  await createArticle({
-    body: request.body.body,
-    id: request.body.id,
-    thumbnailPath: request.body.thumbnailPath,
-    title: request.body.title,
-    isDist: request.body.isDist,
-    createdAt: new Date(),
-    updatedAt: new Date()
-  })
-  response.send('OK');
-})
 
-const createArticle = async (obj) => {
-  await dbClient.query( // インデント"'以外で`
-    /* sql */`
-    INSERT INTO articles (
-      id
-      ,thumbnail_path
-      ,title
-      ,body
-      ,is_dist
-      ,created_at
-      ,updated_at
-    ) VALUES (
-      $id
-      ,$thumbnailPath
-      ,$title
-      ,$body
-      ,$isDist
-      ,$createdAt
-      ,$updatedAt
-    )
-    `,
-    {
-      bind: {
-        id: obj.id,
-        thumbnailPath: obj.thumbnailPath,
-        title: obj.title,
-        body: obj.body,
-        isDist: obj.isDist,
-        createdAt: obj.createdAt,
-        updatedAt: obj.updatedAt
-      }
-    }
-  );
-  return true;
-}
+  models.Article.build({
+    thumbnail_path: request.body.thumbnailPath,
+    title: request.body.title,
+    body: request.body.body,
+    is_dist: request.body.isDist,
+  })
+  .save()
+  response.sendStatus(201);
+})
 
 export default app;
