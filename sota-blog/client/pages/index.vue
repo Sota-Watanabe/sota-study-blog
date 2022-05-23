@@ -1,6 +1,6 @@
 <template>
   <div>
-    <my-header />
+    <my-header :editMode="false"/>
     <div class="m-auto m-w-1084px max-w-6xl">
       <h1 class="m-10 h1-font tracking-wider">BLOG</h1>
       <section class="article-sec flex m-auto flex-wrap justify-center  gap-x-10 gap-y-8">
