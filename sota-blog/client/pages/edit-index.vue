@@ -1,7 +1,7 @@
 <template>
   <div>
     <my-header :editMode="true"/>
-    <div class="mx-[3%] mt-[68px]">
+    <div class="mx-[3%] mt-[68px] mb-[91px]">
       <article-board :isPublic="true" class="my-[38px]"/>
       <article-board :isPublic="true" class="my-[38px]"/>
       <article-board :isPublic="true" class="my-[38px]"/>
@@ -9,6 +9,7 @@
       <article-board :isPublic="true" class="my-[38px]"/>
       <article-board :isPublic="true" class="my-[38px]"/>
     </div>
+    <prev-next />
     <my-footer />
   </div>
 </template>
@@ -34,17 +35,11 @@
 <script lang="ts">
 import Vue from "vue";
 import MyHeader from "../components/MyHeader.vue";
-import ArticleCard from "../components/ArticleCard.vue";
-import Breadcrumb from "../components/Breadcrumb.vue";
 import MyFooter from "../components/MyFooter.vue";
 import ArticleBoard from "../components/ArticleBoard.vue";
+import PrevNext from "../components/PrevNext.vue";
 export default Vue.extend({
   name: "IndexPage",
-  components: { MyHeader, ArticleCard, MyFooter, ArticleBoard },
-  data() {
-    return {
-      cards: [1, 2, 3, 4, 5],
-    };
-  },
+  components: { MyHeader, MyFooter, ArticleBoard, PrevNext },
 });
 </script>
