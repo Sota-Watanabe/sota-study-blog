@@ -1,7 +1,7 @@
 <template>
   <div>
     <my-header :editMode="true" />
-    <div class="flex flex-col mt-[78px] mx-[13%] max-w-[1063px]">
+    <div class="flex flex-col mt-[78px] mx-[13%] max-w-[1063px] pb-[91px]">
       <img src="~/assets/blog-detail.png" class="w-full" />
       <ul class="mt-[56px]">
         <li class="flex items-center">
