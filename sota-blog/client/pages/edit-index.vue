@@ -4,6 +4,10 @@
     <div class="mx-[3%] mt-[68px]">
       <article-board :isPublic="true" class="my-[38px]"/>
       <article-board :isPublic="true" class="my-[38px]"/>
+      <article-board :isPublic="true" class="my-[38px]"/>
+      <article-board :isPublic="true" class="my-[38px]"/>
+      <article-board :isPublic="true" class="my-[38px]"/>
+      <article-board :isPublic="true" class="my-[38px]"/>
     </div>
     <my-footer />
   </div>
