@@ -24,8 +24,8 @@
         </li>
         <li class="flex items-center mt-[43px]">
           <p class="w-[133px] text-[18px]">公開/非公開:</p>
-          <my-button :isYellow="true" text="公開" />
-          <my-button :isYellow="false" text="非公開" />
+          <my-button :isActive="true" text="公開" />
+          <my-button :isActive="false" text="非公開" />
         </li>
         <li class="flex items-center mt-[43px]">
           <p class="w-[95px] text-[18px]">更新日:</p>
@@ -33,8 +33,8 @@
         </li>
       </ul>
       <div class="flex gap-[37px] mt-[90px] ">
-        <my-button :isYellow="false" text="保存" />
-        <my-button :isYellow="false" text="非公開" />
+        <my-button :isActive="false" text="保存" />
+        <my-button :isActive="false" text="非公開" />
       </div>
     </div>
     <my-footer />

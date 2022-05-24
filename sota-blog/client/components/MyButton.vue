@@ -1,7 +1,7 @@
 <template>
   <div>
     <input
-      v-if="isYellow"
+      v-if="isActive"
       type="button"
       :value="text"
       class="w-[93px] h-[51px] mr-[34px] text-[18px] bg-[#FFB800] rounded-[18px]"
@@ -21,7 +21,7 @@
 import Vue from "vue";
 export default Vue.extend({
   name: "MyButton",
-  props: ["isYellow", "text"],
+  props: ["isActive", "text"],
   data() {
     return {};
   }
