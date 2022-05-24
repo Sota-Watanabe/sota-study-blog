@@ -1,6 +1,6 @@
 <template>
   <div>
-    <section class="flex max-w-full border-solid border-b-[0.1px] drop-shadow">
+    <section class="flex max-w-full border-solid border-b-[2px] drop-shadow">
       <p class="h-[100px] w-[189px] text-[22px] ml-8 leading-[100px]">
         {{ getHeaderName }}
       </p>
@@ -28,7 +28,7 @@
   -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
   background-color: black;/*線の色*/
-  border-radius: 2px;
+  -radius: 2px;
 }
 </style>
 
