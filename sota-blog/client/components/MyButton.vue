@@ -4,7 +4,7 @@
       v-if="isActive"
       type="button"
       :value="text"
-      class="w-[93px] h-[51px] mr-[34px] text-[18px] bg-[#FFB800] rounded-[18px]"
+      class="w-[93px] h-[51px] text-[18px] bg-[#FFB800] rounded-[18px]"
     />
     <input
       v-else
