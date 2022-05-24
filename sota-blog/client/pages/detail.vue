@@ -12,36 +12,13 @@
         </p>
       </div>
     </div>
-    <div class="flex justify-between items-center m-auto mt-[40px] mb-[300px] max-w-[401px] ">
-      <div class="arrow-div">
-        <img src="~/assets/arrow-left.png" class="arrow" />
-        <p class="nav-p">PREV</p>
-      </div>
-      <img src="~/assets/center-icon.png" class="w-[18px] h-[18px]" />
-      <div class="arrow-div">
-        <p class="nav-p">NEXT</p>
-        <img src="~/assets/arrow-right.png" class="arrow" />
-      </div>
-    </div>
+    <prev-next />
     <breadcrumb />
     <my-footer />
   </div>
 </template>
 
 <style scoped>
-.arrow {
-  width: 26px;
-  height: 5px;
-  margin: 12px;
-}
-.nav-p {
-  font-size: 14px;
-  line-height: 29px;
-}
-.arrow-div {
-  display: flex;
-  align-content: center;
-}
 </style>
 
 <script lang="ts">
@@ -49,9 +26,10 @@ import Vue from "vue";
 import Breadcrumb from "../components/Breadcrumb.vue";
 import MyFooter from "../components/MyFooter.vue";
 import MyHeader from "../components/MyHeader.vue";
+import PrevNext from "../components/PrevNext.vue";
 import TheTime from "../components/TheTime.vue";
 export default Vue.extend({
   name: "DetailPage",
-  components: { MyHeader, MyFooter, TheTime, Breadcrumb },
+  components: { MyHeader, MyFooter, TheTime, Breadcrumb, PrevNext },
 });
 </script>
