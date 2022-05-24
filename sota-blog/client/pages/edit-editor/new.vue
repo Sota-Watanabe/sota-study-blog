@@ -2,7 +2,9 @@
   <div>
     <my-header :editMode="true" />
     <div class="flex flex-col mt-[78px] mx-[13%] max-w-[1063px] pb-[91px]">
-      <img src="~/assets/blog-detail.png" class="w-full" />
+      <div class="w-full h-dammy border-solid border-[1px] border-black text-center line-h-dammy align-center" >
+        no image
+      </div>
       <ul class="mt-[56px]">
         <li class="flex items-center">
           <p class="text-[18px]">キャッチイメージ:</p>
@@ -17,7 +19,7 @@
         </li>
         <li class="flex">
           <p class="w-[109px] text-[18px]">本文:</p>
-          <input
+          <textarea
             type="text"
             class="w-full h-[323px] border-solid border-[1px] border-black"
           />
@@ -41,7 +43,14 @@
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.h-dammy {
+  height: 30vw;
+}
+.line-h-dammy {
+  line-height: 30vw;
+}
+</style>
 
 <script lang="ts">
 import Vue from "vue";
