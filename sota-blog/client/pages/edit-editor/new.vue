@@ -3,16 +3,32 @@
     <my-header :editMode="true" />
     <div class="flex flex-col mt-[78px] mx-[13%] max-w-[1063px] pb-[91px]">
       <label
+        v-if="value == ''"
         class="w-full h-dammy border-solid border-[1px] border-black text-center line-h-dammy align-center"
       >
         <input ref="file" type="file" @change="upload" class="w-full hidden" />
         no image
       </label>
-      <img :src="value" />
+      <img
+        v-else
+        class="w-full border-solid border-[1px] border-black"
+        :src="value"
+      />
       <ul class="mt-[56px]">
         <li class="flex items-center">
           <p class="text-[18px]">キャッチイメージ:</p>
-          <img src="~/assets/upload.png" class="w-[36px] h-[32px] ml-[29px]" />
+          <label class="ml-[29px]">
+            <img
+              src="~/assets/upload.png"
+              class="w-[36px] h-[32px]"
+            />
+            <input
+              ref="file"
+              type="file"
+              @change="upload"
+              class="w-full hidden"
+            />
+          </label>
         </li>
         <li class="flex my-[41px]">
           <p class="w-[109px] text-[18px]">タイトル:</p>
@@ -82,7 +98,7 @@ export default Vue.extend({
       isPublic: true,
       counter: 0,
       file: null,
-      value: ""
+      value: "",
     };
   },
   methods: {
@@ -100,8 +116,7 @@ export default Vue.extend({
       if (this.checkFile(file)) {
         const picture = await this.getBase64(file);
         this.$emit("input", picture);
-        console.log(typeof(picture))
-        if (typeof(picture) != 'string') return
+        if (typeof picture != "string") return;
         this.value = picture;
       }
     },
@@ -114,7 +129,7 @@ export default Vue.extend({
       });
     },
     checkFile(file: File) {
-      console.log(`file=${file}`)
+      console.log(`file=${file}`);
       let result = true;
       const SIZE_LIMIT = 5000000; // 5MB
       // キャンセルしたら処理中断
