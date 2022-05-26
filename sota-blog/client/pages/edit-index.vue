@@ -1,18 +1,30 @@
 <template>
   <div>
-    <my-header :editMode="true"/>
+    <my-header :edit-mode="true" />
     <div class="mx-[3%] mt-[68px] mb-[91px]">
-      <article-board :isPublic="true" class="my-[38px]"/>
-      <article-board :isPublic="true" class="my-[38px]"/>
-      <article-board :isPublic="true" class="my-[38px]"/>
-      <article-board :isPublic="true" class="my-[38px]"/>
-      <article-board :isPublic="true" class="my-[38px]"/>
-      <article-board :isPublic="true" class="my-[38px]"/>
+      <article-board :is-public="true" class="my-[38px]" />
+      <article-board :is-public="true" class="my-[38px]" />
+      <article-board :is-public="true" class="my-[38px]" />
+      <article-board :is-public="true" class="my-[38px]" />
+      <article-board :is-public="true" class="my-[38px]" />
+      <article-board :is-public="true" class="my-[38px]" />
     </div>
     <prev-next />
     <my-footer />
   </div>
 </template>
+
+<script lang="ts">
+import Vue from 'vue'
+import MyHeader from '../components/MyHeader.vue'
+import MyFooter from '../components/MyFooter.vue'
+import ArticleBoard from '../components/ArticleBoard.vue'
+import PrevNext from '../components/PrevNext.vue'
+export default Vue.extend({
+  name: 'IndexPage',
+  components: { MyHeader, MyFooter, ArticleBoard, PrevNext },
+})
+</script>
 
 <style scoped>
 .h-70px {
@@ -23,23 +35,11 @@
 }
 .h1-font {
   font-size: 58px;
-  font-family: "Abel";
+  font-family: 'Abel';
 }
-.article-sec::after{
-  content:"";
+.article-sec::after {
+  content: '';
   display: block;
   width: 340px;
 }
 </style>
-
-<script lang="ts">
-import Vue from "vue";
-import MyHeader from "../components/MyHeader.vue";
-import MyFooter from "../components/MyFooter.vue";
-import ArticleBoard from "../components/ArticleBoard.vue";
-import PrevNext from "../components/PrevNext.vue";
-export default Vue.extend({
-  name: "IndexPage",
-  components: { MyHeader, MyFooter, ArticleBoard, PrevNext },
-});
-</script>

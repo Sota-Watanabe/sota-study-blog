@@ -9,6 +9,7 @@ module.exports = {
     'plugin:vue/recommended',
     'plugin:prettier/recommended',
   ],
+  ignorePatterns: ['database/**/*.js'],
   rules: {
     'prettier/prettier': [
       'error',
