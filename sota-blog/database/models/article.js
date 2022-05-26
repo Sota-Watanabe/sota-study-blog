@@ -13,6 +13,12 @@ module.exports = (sequelize, DataTypes) => {
   }
   Article.init(
     {
+      id: {
+        allowNull: false,
+        primaryKey: true,
+        type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV4,
+      },
       thumbnail_path: DataTypes.STRING,
       title: DataTypes.STRING,
       body: DataTypes.TEXT,
