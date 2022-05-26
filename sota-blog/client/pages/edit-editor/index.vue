@@ -1,6 +1,6 @@
 <template>
   <div>
-    <my-header :editMode="true" />
+    <my-header :edit-mode="true" />
     <div class="flex flex-col mt-[78px] mx-[13%] max-w-[1063px] pb-[91px]">
       <img src="~/assets/blog-detail.png" class="w-full" />
       <ul class="mt-[56px]">
@@ -24,35 +24,35 @@
         </li>
         <li class="flex items-center mt-[43px]">
           <p class="w-[133px] text-[18px]">公開/非公開:</p>
-          <my-button :isActive="true" text="公開" />
-          <my-button :isActive="false" text="非公開" />
+          <my-button :is-active="true" text="公開" />
+          <my-button :is-active="false" text="非公開" />
         </li>
         <li class="flex items-center mt-[43px]">
           <p class="w-[95px] text-[18px]">更新日:</p>
           <the-time />
         </li>
       </ul>
-      <div class="flex gap-[37px] mt-[90px] ">
-        <my-button :isActive="false" text="保存" />
-        <my-button :isActive="false" text="非公開" />
+      <div class="flex gap-[37px] mt-[90px]">
+        <my-button :is-active="false" text="保存" />
+        <my-button :is-active="false" text="非公開" />
       </div>
     </div>
     <my-footer />
   </div>
 </template>
 
-<style scoped></style>
-
 <script lang="ts">
-import Vue from "vue";
-import MyHeader from "../../components/MyHeader.vue";
-import MyFooter from "../../components/MyFooter.vue";
-import ArticleBoard from "../../components/ArticleBoard.vue";
-import PrevNext from "../../components/PrevNext.vue";
-import TheTime from "../../components/TheTime.vue";
-import MyButton from "../../components/MyButton.vue";
+import Vue from 'vue'
+import MyHeader from '../../components/MyHeader.vue'
+import MyFooter from '../../components/MyFooter.vue'
+import ArticleBoard from '../../components/ArticleBoard.vue'
+import PrevNext from '../../components/PrevNext.vue'
+import TheTime from '../../components/TheTime.vue'
+import MyButton from '../../components/MyButton.vue'
 export default Vue.extend({
-  name: "IndexPage",
+  name: 'IndexPage',
   components: { MyHeader, MyFooter, ArticleBoard, PrevNext, TheTime, MyButton },
-});
+})
 </script>
+
+<style scoped></style>

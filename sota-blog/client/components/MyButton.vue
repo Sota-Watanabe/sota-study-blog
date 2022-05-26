@@ -15,15 +15,18 @@
   </div>
 </template>
 
-<style scoped></style>
-
 <script>
-import Vue from "vue";
+import Vue from 'vue'
 export default Vue.extend({
-  name: "MyButton",
-  props: ["isActive", "text"],
+  name: 'MyButton',
+  props: {
+    isActive: { type: Boolean, default: true },
+    text: { type: String, default: '' },
+  },
   data() {
-    return {};
-  }
-});
+    return {}
+  },
+})
 </script>
+
+<style scoped></style>

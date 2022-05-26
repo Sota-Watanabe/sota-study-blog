@@ -14,6 +14,13 @@
   </div>
 </template>
 
+<script>
+import Vue from 'vue'
+export default Vue.extend({
+  name: 'PrevNext',
+})
+</script>
+
 <style scoped>
 .arrow {
   width: 26px;
@@ -29,10 +36,3 @@
   align-content: center;
 }
 </style>
-
-<script>
-import Vue from "vue";
-export default Vue.extend({
-  name: "PrevNext",
-});
-</script>

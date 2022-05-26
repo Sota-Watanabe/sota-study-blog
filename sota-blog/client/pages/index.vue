@@ -1,20 +1,35 @@
 <template>
   <div>
-    <my-header :editMode="false"/>
+    <my-header :edit-mode="false" />
     <div class="m-auto m-w-1084px max-w-6xl">
       <h1 class="m-10 h1-font tracking-wider">BLOG</h1>
-      <section class="article-sec flex m-auto flex-wrap justify-center  gap-x-10 gap-y-8">
-        <article-card
-          v-for="card of cards"
-          :key="card.number"
-
-        />
+      <section
+        class="article-sec flex m-auto flex-wrap justify-center gap-x-10 gap-y-8"
+      >
+        <article-card v-for="card of cards" :key="card.number" />
       </section>
     </div>
     <breadcrumb />
     <my-footer />
   </div>
 </template>
+
+<script lang="ts">
+import Vue from 'vue'
+import MyHeader from '../components/MyHeader.vue'
+import ArticleCard from '../components/ArticleCard.vue'
+import Breadcrumb from '../components/Breadcrumb.vue'
+import MyFooter from '../components/MyFooter.vue'
+export default Vue.extend({
+  name: 'IndexPage',
+  components: { MyHeader, ArticleCard, Breadcrumb, MyFooter },
+  data() {
+    return {
+      cards: [1, 2, 3, 4, 5],
+    }
+  },
+})
+</script>
 
 <style scoped>
 .h-70px {
@@ -25,28 +40,11 @@
 }
 .h1-font {
   font-size: 58px;
-  font-family: "Abel";
+  font-family: 'Abel';
 }
-.article-sec::after{
-  content:"";
+.article-sec::after {
+  content: '';
   display: block;
   width: 340px;
 }
 </style>
-
-<script lang="ts">
-import Vue from "vue";
-import MyHeader from "../components/MyHeader.vue";
-import ArticleCard from "../components/ArticleCard.vue";
-import Breadcrumb from "../components/Breadcrumb.vue";
-import MyFooter from "../components/MyFooter.vue";
-export default Vue.extend({
-  name: "IndexPage",
-  components: { MyHeader, ArticleCard, Breadcrumb, MyFooter },
-  data() {
-    return {
-      cards: [1, 2, 3, 4, 5],
-    };
-  },
-});
-</script>

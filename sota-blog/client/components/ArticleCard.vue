@@ -1,5 +1,5 @@
 <template>
-  <article class="max-w-[340px] h-[326px] ">
+  <article class="max-w-[340px] h-[326px]">
     <img
       src="~/assets/blog-image.png"
       alt="記事の画像"
@@ -15,12 +15,11 @@
   </article>
 </template>
 
-<style scoped>
-</style>
 <script lang="ts">
-import Vue from "vue";
-import TheTime from "../components/TheTime.vue";
+import Vue from 'vue'
+import TheTime from '../components/TheTime.vue'
 export default Vue.extend({
   components: { TheTime },
-});
+})
 </script>
+<style scoped></style>
