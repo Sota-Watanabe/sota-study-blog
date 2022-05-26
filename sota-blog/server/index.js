@@ -17,23 +17,22 @@ app.get('/api', (_, response) => {
 
 app.post('/api/articles', async (request, response) => {
   if (
-    !request.body.id ||
     !request.body.thumbnailPath ||
     !request.body.title ||
     !request.body.body ||
     request.body.isDist === undefined
   ) {
-    response.status(400).send('bad request')
+    response.status(400).json({ message: 'bad request' })
     return
   }
 
-  models.Article.build({
+  const a = await models.Article.create({
     thumbnail_path: request.body.thumbnailPath,
     title: request.body.title,
     body: request.body.body,
     is_dist: request.body.isDist,
-  }).save()
-  response.sendStatus(201)
+  })
+  response.status(201).json({ message: a })
 })
 
 export default app
