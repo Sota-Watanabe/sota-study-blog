@@ -32,6 +32,12 @@ import TheTime from '../components/TheTime.vue'
 export default Vue.extend({
   name: 'DetailPage',
   components: { MyHeader, MyFooter, TheTime, Breadcrumb, PrevNext },
+  async created() {
+    const ALBUM_API =
+      'http://localhost:3000/api/articles/b0e511e1-e449-4b04-a368-cffcecd4808a'
+    const articles = await this.$axios.$get(ALBUM_API)
+    console.log('articles:', articles)
+  },
 })
 </script>
 
