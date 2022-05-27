@@ -10,7 +10,7 @@
 </template>
 
 <script>
-export default {
+export default Vue.extend({
   name: 'BreadCrumb',
   components: {},
   data() {
@@ -18,7 +18,7 @@ export default {
       bread: ['TOP', 'BLOG'],
     }
   },
-}
+})
 </script>
 
 <style scoped></style>

@@ -8,4 +8,9 @@
   </div>
 </template>
 
+<script>
+export default Vue.extend({
+  name: 'MyFooter',
+})
+</script>
 <style scoped></style>
