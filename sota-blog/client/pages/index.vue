@@ -6,7 +6,7 @@
       <section
         class="article-sec flex m-auto flex-wrap justify-center gap-x-10 gap-y-8"
       >
-        <article-card v-for="card of cards" :key="card.number" />
+        <article-card v-for="card of articles" :key="card.id" />
       </section>
     </div>
     <breadcrumb />
@@ -25,8 +25,14 @@ export default Vue.extend({
   components: { MyHeader, ArticleCard, Breadcrumb, MyFooter },
   data() {
     return {
-      cards: [1, 2, 3, 4, 5],
+      articles: [],
     }
+  },
+  async created() {
+    const articles = await this.$axios.$get(
+      'http://localhost:3000/api/articles/'
+    )
+    this.articles = articles.articles
   },
 })
 </script>

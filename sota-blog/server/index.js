@@ -12,8 +12,8 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 app.get('/api/articles', async (_, response) => {
-  const users = await models.Article.findAll()
-  response.status(200).json({ message: users })
+  const articles = await models.Article.findAll()
+  response.status(200).json({ articles })
   return
 })
 
