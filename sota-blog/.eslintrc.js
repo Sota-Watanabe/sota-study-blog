@@ -18,5 +18,11 @@ module.exports = {
         semi: false,
       },
     ],
+    'vue/multi-word-component-names': [
+      'error',
+      {
+        ignores: ['error'],
+      },
+    ],
   },
 }
