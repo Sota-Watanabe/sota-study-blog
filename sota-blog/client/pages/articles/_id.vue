@@ -52,7 +52,13 @@ export default Vue.extend({
   async created() {
     const ARTICLE_API = `http://localhost:3000/api/articles/${this.$route.params.id}`
     const article = await this.$axios.$get(ARTICLE_API)
-    this.articleInfo = article.article[0]
+    if (!article.article) {
+      // errorメソッドでstatusCodeを指定してエラーページへ飛ばす
+      this.$nuxt.error({
+        statusCode: 404,
+      })
+    }
+    this.articleInfo = article.article
   },
 })
 </script>
