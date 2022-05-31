@@ -38,11 +38,7 @@ app.post('/api/articles', async (request, response) => {
 })
 
 app.get('/api/articles/:id', async (request, response) => {
-  const article = await models.Article.findAll({
-    where: {
-      id: request.params.id,
-    },
-  })
+  const article = await models.Article.findByPk(request.params.id)
   response.status(200).json({ article })
   return
 })
