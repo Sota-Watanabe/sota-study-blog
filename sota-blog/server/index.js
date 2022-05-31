@@ -37,6 +37,26 @@ app.post('/api/articles', async (request, response) => {
   response.status(201).json({ article })
 })
 
+app.put('/api/articles/:id', async (request, response) => {
+  if (
+    !request.body.thumbnailPath ||
+    !request.body.title ||
+    !request.body.body ||
+    request.body.isDist === undefined
+  ) {
+    response.status(400).json({ message: 'bad request' })
+    return
+  }
+  const target = await models.Article.findByPk(request.params.id)
+  const article = await target.update({
+    thumbnail_path: request.body.thumbnailPath,
+    title: request.body.title,
+    body: request.body.body,
+    is_dist: request.body.isDist,
+  })
+  response.status(200).json({ article })
+})
+
 app.get('/api/articles/:id', async (request, response) => {
   const article = await models.Article.findByPk(request.params.id)
   response.status(200).json({ article })
