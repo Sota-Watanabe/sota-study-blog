@@ -34,7 +34,7 @@ app.post('/api/articles', async (request, response) => {
     body: request.body.body,
     is_dist: request.body.isDist,
   })
-  response.status(201).json({ message: article })
+  response.status(201).json({ article })
 })
 
 app.get('/api/articles/:id', async (request, response) => {

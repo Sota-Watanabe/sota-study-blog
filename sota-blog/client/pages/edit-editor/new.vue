@@ -30,6 +30,7 @@
         <li class="flex my-[41px]">
           <p class="w-[109px] text-[18px]">タイトル:</p>
           <input
+            v-model="articleInfo.title"
             type="text"
             class="w-full border-solid border-[1px] border-black"
           />
@@ -37,6 +38,7 @@
         <li class="flex">
           <p class="w-[109px] text-[18px]">本文:</p>
           <textarea
+            v-model="articleInfo.body"
             type="text"
             class="w-full h-[323px] border-solid border-[1px] border-black"
           />
@@ -44,15 +46,15 @@
         <li class="flex items-center mt-[43px]">
           <p class="w-[133px] text-[18px]">公開/非公開:</p>
           <my-button
-            :is-active="isPublic"
+            :is-active="articleInfo.isDist"
             text="公開"
-            @click.native="isPublic = true"
+            @click.native="articleInfo.isDist = true"
           />
           <my-button
-            :is-active="!isPublic"
+            :is-active="!articleInfo.isDist"
             text="非公開"
             class="ml-[34px]"
-            @click.native="isPublic = false"
+            @click.native="articleInfo.isDist = false"
           />
         </li>
         <li class="flex items-center mt-[43px]">
@@ -61,7 +63,11 @@
         </li>
       </ul>
       <div class="flex gap-[37px] mt-[90px]">
-        <my-button :is-active="false" text="保存" />
+        <my-button
+          :is-active="false"
+          text="保存"
+          @click.native="submitArticleInfo"
+        />
         <my-button :is-active="false" text="非公開" />
       </div>
     </div>
@@ -83,20 +89,37 @@ export default Vue.extend({
   props: [],
   data() {
     return {
-      isPublic: true,
-      counter: 0,
-      file: null,
+      articleInfo: {
+        thumbnailPath: '/a',
+        title: '',
+        body: '',
+        isDist: false,
+      },
       value: '',
     }
   },
   methods: {
+    submitArticleInfo: function () {
+      const info = this.articleInfo
+      if (info.title != '' && info.body != '') {
+        this.postData()
+      }
+    },
+    async postData() {
+      const res = await this.$axios.$post(
+        'http://localhost:3000/api/articles',
+        this.articleInfo
+      )
+      // エラー処理 未確認
+      if (res) {
+        this.$router.push(`/articles/${res.article.id}`)
+      } else {
+        console.log('error')
+      }
+      return res
+    },
     // https://qiita.com/itoshiki/items/511d58b827f4ce2129fc 参考
     async upload(event: Event) {
-      //  if (event.target instanceof HTMLInputElement == false
-      // //  event.target == null ||
-      // //  event.target.files ==null
-      //  ) return
-      //  if (event.target == null) return
       const files = (event.target as HTMLInputElement).files
       if (files == null) return
       const file = files[0]
