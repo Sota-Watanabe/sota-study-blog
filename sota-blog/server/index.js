@@ -38,12 +38,12 @@ app.post('/api/articles', async (request, response) => {
 })
 
 app.get('/api/articles/:id', async (request, response) => {
-  const user = await models.Article.findAll({
+  const article = await models.Article.findAll({
     where: {
       id: request.params.id,
     },
   })
-  response.status(200).json({ message: user })
+  response.status(200).json({ article })
   return
 })
 
