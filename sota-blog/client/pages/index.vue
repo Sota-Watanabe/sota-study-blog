@@ -23,10 +23,10 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import MyHeader from '../components/MyHeader.vue'
-import ArticleCard from '../components/ArticleCard.vue'
-import Breadcrumb from '../components/Breadcrumb.vue'
-import MyFooter from '../components/MyFooter.vue'
+import MyHeader from '~/components/MyHeader.vue'
+import ArticleCard from '~/components/ArticleCard.vue'
+import Breadcrumb from '~/components/Breadcrumb.vue'
+import MyFooter from '~/components/MyFooter.vue'
 export default Vue.extend({
   name: 'IndexPage',
   components: { MyHeader, ArticleCard, Breadcrumb, MyFooter },

@@ -68,7 +68,11 @@
           text="保存"
           @click.native="submitArticleInfo"
         />
-        <my-button :is-active="false" text="非公開" />
+        <my-button
+          :is-active="false"
+          text="cancel"
+          @click.native="$router.push('/edit/')"
+        />
       </div>
     </div>
     <my-footer />
@@ -77,12 +81,12 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import MyHeader from '../../components/MyHeader.vue'
-import MyFooter from '../../components/MyFooter.vue'
-import ArticleBoard from '../../components/ArticleBoard.vue'
-import PrevNext from '../../components/PrevNext.vue'
-import TheTime from '../../components/TheTime.vue'
-import MyButton from '../../components/MyButton.vue'
+import MyHeader from '~/components/MyHeader.vue'
+import MyFooter from '~/components/MyFooter.vue'
+import ArticleBoard from '~/components/ArticleBoard.vue'
+import PrevNext from '~/components/PrevNext.vue'
+import TheTime from '~/components/TheTime.vue'
+import MyButton from '~/components/MyButton.vue'
 export default Vue.extend({
   name: 'IndexPage',
   components: { MyHeader, MyFooter, ArticleBoard, PrevNext, TheTime, MyButton },
