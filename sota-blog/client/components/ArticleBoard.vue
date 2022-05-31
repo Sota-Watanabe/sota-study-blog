@@ -6,9 +6,7 @@
       title="記事の画像"
       class="h-full blog-image"
     />
-    <p class="ml-[35px] flex-grow">
-      ブログタイトルブログタイトルブログタイトルブログタイトルブログタ...
-    </p>
+    <p class="ml-[35px] flex-grow">{{ title }}</p>
     <the-time class="ml-[39px]" />
     <div class="ml-[102px]">{{ getStatus }}</div>
     <img
@@ -33,9 +31,9 @@ import TheTime from './TheTime.vue'
 export default Vue.extend({
   name: 'ArticleBoard',
   components: { TheTime },
-  props: { isPublic: { type: Boolean, default: true } },
-  data() {
-    return {}
+  props: {
+    isPublic: { type: Boolean, default: true },
+    title: { type: Boolean, default: true },
   },
   computed: {
     getStatus: function () {

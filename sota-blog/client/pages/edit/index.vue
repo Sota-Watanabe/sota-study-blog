@@ -2,15 +2,17 @@
   <div>
     <my-header :edit-mode="true" />
     <div class="mx-[3%] mt-[68px] mb-[91px]">
-      <article-board :is-public="true" class="my-[38px]" />
-      <article-board :is-public="true" class="my-[38px]" />
-      <article-board :is-public="true" class="my-[38px]" />
-      <article-board :is-public="true" class="my-[38px]" />
-      <article-board :is-public="true" class="my-[38px]" />
-      <article-board :is-public="true" class="my-[38px]" />
+      <article-board
+        v-for="board of articles"
+        :key="board.id"
+        :title="board.title"
+        :is-public="board.is_dist"
+        class="my-[38px]"
+      />
     </div>
     <prev-next />
     <my-footer />
+    {{ articles }}
   </div>
 </template>
 
@@ -33,6 +35,7 @@ export default Vue.extend({
       'http://localhost:3000/api/articles/'
     )
     this.articles = articles.articles
+    console.log(this.articles)
   },
 })
 </script>
