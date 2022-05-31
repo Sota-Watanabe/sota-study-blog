@@ -5,7 +5,7 @@
       <div
         class="m-auto mt-[49px] pb-[151px] max-w-[800px] flex-col justify-center border-solid border-[#F3F3F4] border-b-[2px]"
       >
-        <the-time class="mb-2" />
+        <the-time :time="articleInfo.createdAt" class="mb-2" />
         <h2 class="text-[32px] mb-8">
           {{ articleInfo.title }}
         </h2>
@@ -18,7 +18,6 @@
     <prev-next />
     <breadcrumb />
     <my-footer />
-    {{ articleInfo }}
   </div>
 </template>
 

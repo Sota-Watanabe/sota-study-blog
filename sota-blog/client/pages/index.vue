@@ -6,11 +6,18 @@
       <section
         class="article-sec flex m-auto flex-wrap justify-center gap-x-10 gap-y-8"
       >
-        <article-card v-for="card of articles" :key="card.id" />
+        <article-card
+          v-for="card of articles"
+          :id="card.id"
+          :key="card.id"
+          :title="card.title"
+          :created-at="card.createdAt"
+        />
       </section>
     </div>
     <breadcrumb />
     <my-footer />
+    {{ articles }}
   </div>
 </template>
 
