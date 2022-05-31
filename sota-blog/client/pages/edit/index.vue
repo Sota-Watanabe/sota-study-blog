@@ -16,13 +16,24 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import MyHeader from '../components/MyHeader.vue'
-import MyFooter from '../components/MyFooter.vue'
-import ArticleBoard from '../components/ArticleBoard.vue'
-import PrevNext from '../components/PrevNext.vue'
+import MyHeader from '../../components/MyHeader.vue'
+import MyFooter from '../../components/MyFooter.vue'
+import ArticleBoard from '../../components/ArticleBoard.vue'
+import PrevNext from '../../components/PrevNext.vue'
 export default Vue.extend({
   name: 'IndexPage',
   components: { MyHeader, MyFooter, ArticleBoard, PrevNext },
+  data() {
+    return {
+      articles: [],
+    }
+  },
+  async created() {
+    const articles = await this.$axios.$get(
+      'http://localhost:3000/api/articles/'
+    )
+    this.articles = articles.articles
+  },
 })
 </script>
 
