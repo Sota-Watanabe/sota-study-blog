@@ -34,7 +34,6 @@ export default Vue.extend({
       'http://localhost:3000/api/articles/'
     )
     this.articles = articles.articles
-    console.log(this.articles)
   },
 })
 </script>
