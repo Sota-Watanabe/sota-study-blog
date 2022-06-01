@@ -128,7 +128,6 @@ export default Vue.extend({
     },
     async putData() {
       const ARTICLE_API = `http://localhost:3000/api/articles/${this.$route.params.id}`
-      console.log(this.articleInfo)
       const res = await this.$axios.$put(ARTICLE_API, {
         // ここなんとかする 多分type
         thumbnailPath: this.articleInfo.thumbnailPath,
