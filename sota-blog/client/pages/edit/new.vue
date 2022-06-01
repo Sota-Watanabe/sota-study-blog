@@ -1,6 +1,9 @@
 <template>
   <div>
     <my-header :edit-mode="true" />
+    <form action="/profile" method="post" enctype="multipart/form-data">
+      <input type="file" name="avatar" />
+    </form>
     <div class="flex flex-col mt-[78px] mx-[13%] max-w-[1063px] pb-[91px]">
       <label
         v-if="value == ''"
