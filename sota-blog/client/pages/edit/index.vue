@@ -5,6 +5,7 @@
       <article-board
         v-for="board of articles"
         :key="board.id"
+        :article-id="board.id"
         :title="board.title"
         :is-public="board.is_dist"
         class="my-[38px]"

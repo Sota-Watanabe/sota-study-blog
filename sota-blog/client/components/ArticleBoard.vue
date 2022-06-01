@@ -14,12 +14,14 @@
       alt="編集アイコン"
       title="編集アイコン"
       class="ml-[71px]"
+      @click="$router.push(`/edit/articles/${articleId}`)"
     />
     <img
       src="~/assets/trash.png"
       alt="ゴミ箱アイコン"
       title="ゴミ箱アイコン"
       class="ml-[63px] mr-[26px]"
+      @click="deleteArticle"
     />
     <div class="drop-shadow-md" />
   </div>
@@ -32,13 +34,27 @@ export default Vue.extend({
   name: 'ArticleBoard',
   components: { TheTime },
   props: {
+    articleId: { type: String, default: '' },
     isPublic: { type: Boolean, default: true },
-    title: { type: Boolean, default: true },
+    title: { type: String, default: '' },
   },
   computed: {
     getStatus: function () {
       if (this.isPublic == true) return '公開'
       else return '非公開'
+    },
+  },
+  methods: {
+    async deleteArticle() {
+      const ARTICLE_API = `http://localhost:3000/api/articles/${this.articleId}`
+      const res = await this.$axios.$delete(ARTICLE_API)
+      if (res) {
+        // これで良いのか？
+        location.reload()
+      } else {
+        console.log('error')
+      }
+      return res
     },
   },
 })

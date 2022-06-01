@@ -48,6 +48,10 @@ app.put('/api/articles/:id', async (request, response) => {
     return
   }
   const target = await models.Article.findByPk(request.params.id)
+  if (target == undefined) {
+    response.status(400).json({ message: 'bad request' })
+    return
+  }
   const article = await target.update({
     thumbnail_path: request.body.thumbnailPath,
     title: request.body.title,
@@ -57,9 +61,24 @@ app.put('/api/articles/:id', async (request, response) => {
   response.status(200).json({ article })
 })
 
+app.delete('/api/articles/:id', async (request, response) => {
+  const target = await models.Article.findByPk(request.params.id)
+  if (target == undefined) {
+    response.status(400).json({ message: 'bad request' })
+    return
+  }
+  const article = await target.destroy()
+  response.status(200).json({ article })
+})
+
 app.get('/api/articles/:id', async (request, response) => {
   const article = await models.Article.findByPk(request.params.id)
-  response.status(200).json({ article })
+  if (article === undefined) {
+    // 未確認
+    response.status(400).json({ message: 'bad request' })
+    return
+  }
+  response.status(200)
   return
 })
 
