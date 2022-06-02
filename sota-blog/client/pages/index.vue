@@ -8,8 +8,9 @@
       >
         <article-card
           v-for="card of articles"
-          :id="card.id"
           :key="card.id"
+          :article-id="card.id"
+          :thumbnail-path="card.thumbnail_path"
           :title="card.title"
           :created-at="card.createdAt"
         />
@@ -17,7 +18,6 @@
     </div>
     <breadcrumb />
     <my-footer />
-    {{ articles }}
   </div>
 </template>
 

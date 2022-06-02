@@ -1,7 +1,7 @@
 <template>
   <article class="max-w-[340px] h-[326px]" @click="link">
     <img
-      src="~/assets/blog-image.png"
+      :src="thumbnailPath"
       alt="記事の画像"
       title="記事の画像"
       class="blog-image"
@@ -22,13 +22,14 @@ export default Vue.extend({
   name: 'ArticleBoard',
   components: { TheTime },
   props: {
-    id: { type: String, default: '' },
+    articleId: { type: String, default: '' },
+    thumbnailPath: { type: String, default: '' },
     title: { type: String, default: '' },
     createdAt: { type: String, default: '' },
   },
   methods: {
     link() {
-      this.$router.push(`/articles/${this.id}`)
+      this.$router.push(`/articles/${this.articleId}`)
     },
   },
 })
