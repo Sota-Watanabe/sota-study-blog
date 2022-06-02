@@ -7,7 +7,7 @@
         class="article-sec flex m-auto flex-wrap justify-center gap-x-10 gap-y-8"
       >
         <article-card
-          v-for="card of articles"
+          v-for="card of displayCards"
           :key="card.id"
           :article-id="card.id"
           :thumbnail-path="card.thumbnail_path"
@@ -27,13 +27,32 @@ import MyHeader from '~/components/MyHeader.vue'
 import ArticleCard from '~/components/ArticleCard.vue'
 import Breadcrumb from '~/components/Breadcrumb.vue'
 import MyFooter from '~/components/MyFooter.vue'
+interface Article {
+  thumbnailPath: string
+  title: string
+  body: string
+  is_dist: boolean
+}
+
 export default Vue.extend({
   name: 'IndexPage',
   components: { MyHeader, ArticleCard, Breadcrumb, MyFooter },
-  data() {
+  data(): {
+    articles: Array<Article>
+  } {
     return {
       articles: [],
     }
+  },
+  computed: {
+    displayCards: function (): Array<Article> {
+      console.log(this.articles)
+      const cards = this.articles.filter((article) => {
+        return article.is_dist === true
+      })
+      console.log(`cards=${cards}`)
+      return cards
+    },
   },
   async created() {
     const articles = await this.$axios.$get(
