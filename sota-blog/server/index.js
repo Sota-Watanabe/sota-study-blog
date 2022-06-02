@@ -4,7 +4,6 @@ import dotenv from 'dotenv'
 const app = express()
 const models = require('../database/models')
 const multer = require('multer')
-const path = require('path')
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -103,7 +102,7 @@ app.get('/api/articles/:id', async (request, response) => {
     response.status(400).json({ message: 'bad request' })
     return
   }
-  response.status(200)
+  response.status(200).json({ article })
   return
 })
 
