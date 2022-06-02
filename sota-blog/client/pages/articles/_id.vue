@@ -9,7 +9,7 @@
         <h2 class="text-[32px] mb-8">
           {{ articleInfo.title }}
         </h2>
-        <img src="~/assets/blog-detail.png" class="blog-detail-img" />
+        <img :src="articleInfo.thumbnail_path" class="blog-detail-img" />
         <p class="text-[16px] leading-[28.8px] tracking-wider mt-10">
           {{ articleInfo.body }}
         </p>
@@ -57,7 +57,11 @@ export default Vue.extend({
         statusCode: 404,
       })
     }
-    this.articleInfo = article.article
+    console.log(article)
+    this.articleInfo.title = article.article.title
+    this.articleInfo.thumbnail_path = article.article.thumbnail_path
+    this.articleInfo.body = article.article.body
+    this.articleInfo.is_dist = article.article.is_dist
   },
 })
 </script>

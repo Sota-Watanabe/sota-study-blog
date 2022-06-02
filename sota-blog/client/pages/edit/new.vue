@@ -133,7 +133,7 @@ export default Vue.extend({
         formData,
         config
       )
-      this.articleInfo.thumbnailPath = `localhost:3000/uploads/${res.filename}`
+      this.articleInfo.thumbnailPath = `http://localhost:3000/uploads/${res.filename}`
       res = await this.$axios.$post(
         'http://localhost:3000/api/articles',
         this.articleInfo
