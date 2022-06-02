@@ -6,7 +6,11 @@
       <img src="~/assets/arrow-left.png" class="arrow" />
       <p class="nav-p">PREV</p>
     </div>
-    <img src="~/assets/center-icon.png" class="w-[18px] h-[18px]" />
+    <img
+      src="~/assets/center-icon.png"
+      class="w-[18px] h-[18px]"
+      @click="$router.push('/')"
+    />
     <div class="arrow-div">
       <p class="nav-p">NEXT</p>
       <img src="~/assets/arrow-right.png" class="arrow" />
