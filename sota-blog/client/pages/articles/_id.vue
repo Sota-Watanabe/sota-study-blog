@@ -9,7 +9,12 @@
         <h2 class="text-[32px] mb-8">
           {{ articleInfo.title }}
         </h2>
-        <img :src="articleInfo.thumbnail_path" class="blog-detail-img m-auto" />
+        <div class="flex h-[500px]">
+          <img
+            :src="articleInfo.thumbnail_path"
+            class="blog-detail-img m-auto"
+          />
+        </div>
         <p class="text-[16px] leading-[28.8px] tracking-wider mt-10">
           {{ articleInfo.body }}
         </p>

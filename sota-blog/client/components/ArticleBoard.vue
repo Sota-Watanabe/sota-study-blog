@@ -1,11 +1,13 @@
 <template>
   <div class="flex space-between items-center w-full h-[162px]">
-    <img
-      src="~/assets/blog-detail.png"
-      alt="記事の画像"
-      title="記事の画像"
-      class="h-full blog-image"
-    />
+    <div class="w-[250px]">
+      <img
+        :src="thumbnailPath"
+        alt="記事の画像"
+        title="記事の画像"
+        class="h-full m-auto blog-image"
+      />
+    </div>
     <p class="ml-[35px] flex-grow">{{ title }}</p>
     <the-time class="ml-[39px]" />
     <div class="ml-[102px]">{{ getStatus }}</div>
@@ -35,6 +37,7 @@ export default Vue.extend({
   components: { TheTime },
   props: {
     articleId: { type: String, default: '' },
+    thumbnailPath: { type: String, default: '' },
     isPublic: { type: Boolean, default: true },
     title: { type: String, default: '' },
   },

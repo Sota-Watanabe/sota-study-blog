@@ -6,6 +6,7 @@
         v-for="board of articles"
         :key="board.id"
         :article-id="board.id"
+        :thumbnail-path="board.thumbnail_path"
         :title="board.title"
         :is-public="board.is_dist"
         class="my-[38px]"
