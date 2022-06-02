@@ -1,10 +1,10 @@
 <template>
-  <article class="max-w-[340px] h-[326px]" @click="link">
+  <article class="w-[340px] h-[326px]" @click="link">
     <img
       :src="thumbnailPath"
       alt="記事の画像"
       title="記事の画像"
-      class="blog-image"
+      class="blog-image m-auto"
     />
     <div class="detail-text">
       <the-time :time="createdAt" class="mb-1" />
