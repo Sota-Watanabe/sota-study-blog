@@ -1,11 +1,13 @@
 <template>
   <article class="w-[340px] h-[326px]" @click="link">
-    <img
-      :src="thumbnailPath"
-      alt="記事の画像"
-      title="記事の画像"
-      class="blog-image m-auto"
-    />
+    <div class="h-[240px]">
+      <img
+        :src="thumbnailPath"
+        alt="記事の画像"
+        title="記事の画像"
+        class="blog-image m-auto"
+      />
+    </div>
     <div class="detail-text">
       <the-time :time="createdAt" class="mb-1" />
       <h3 class="text-[16px] leading-[180%] tracking-[0.03em]">
