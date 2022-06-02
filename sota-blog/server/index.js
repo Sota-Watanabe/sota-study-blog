@@ -1,8 +1,24 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 import express from 'express'
 import dotenv from 'dotenv'
 const app = express()
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 const models = require('../database/models')
+const multer = require('multer')
+const path = require('path')
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'server/public/uploads/')
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname)
+  },
+})
+
+const upload = multer({ storage: storage })
+// const upload = multer({ dest: './server/public/uploads/' })
+app.use(express.static(__dirname + '/public'))
+
 dotenv.config()
 
 //for parsing application/json
@@ -10,6 +26,15 @@ app.use(express.json())
 
 //for parsing application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }))
+
+// for multer
+app.post('/upload', upload.single('file'), function (req, res, next) {
+  console.log(req.file)
+  // これで取得可能
+  // http://localhost:3000/public/uploads/7e3d2b670048acddb03cd2edd55236b1
+
+  res.send('ファイルのアップロードが完了しました。')
+})
 
 app.get('/api/articles', async (_, response) => {
   const articles = await models.Article.findAll()

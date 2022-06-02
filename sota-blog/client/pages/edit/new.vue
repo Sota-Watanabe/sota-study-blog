@@ -1,8 +1,9 @@
 <template>
   <div>
     <my-header :edit-mode="true" />
-    <form action="/profile" method="post" enctype="multipart/form-data">
-      <input type="file" name="avatar" />
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+      <input type="file" name="file" />
+      <button type="submit">送信</button>
     </form>
     <div class="flex flex-col mt-[78px] mx-[13%] max-w-[1063px] pb-[91px]">
       <label
