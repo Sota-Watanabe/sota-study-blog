@@ -4,12 +4,24 @@
       <p class="h-[100px] w-[189px] text-[22px] ml-8 leading-[100px]">
         {{ getHeaderName }}
       </p>
-      <div v-if="!editMode" class="m-auto relative mr-[47px] menu">
+      <div
+        v-if="!editMode"
+        class="m-auto relative mr-[47px] menu"
+        @click="$router.push('/edit')"
+      >
         <p>BLOG</p>
       </div>
       <div v-else class="flex items-center m-auto mr-1">
-        <img src="~/assets/plus.png" class="w-[29.1px] h-[29.1px]" />
-        <img src="~/assets/home.svg" class="w-[41px] h-[35px] mx-[52px]" />
+        <img
+          src="~/assets/plus.png"
+          class="w-[29.1px] h-[29.1px]"
+          @click="$router.push('/edit/new')"
+        />
+        <img
+          src="~/assets/home.svg"
+          class="w-[41px] h-[35px] mx-[52px]"
+          @click="$router.push('/')"
+        />
       </div>
     </section>
     <div class="drop-shadow-md" />
