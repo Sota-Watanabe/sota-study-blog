@@ -1,13 +1,9 @@
 <template>
   <div>
     <my-header :edit-mode="true" />
-    <form action="/upload" method="POST" enctype="multipart/form-data">
-      <input type="file" name="file" />
-      <button type="submit">送信</button>
-    </form>
     <div class="flex flex-col mt-[78px] mx-[13%] max-w-[1063px] pb-[91px]">
       <label
-        v-if="value == ''"
+        v-if="result == ''"
         class="w-full h-dammy border-solid border-[1px] border-black text-center line-h-dammy align-center"
       >
         <input ref="file" type="file" class="w-full hidden" @change="upload" />
@@ -16,7 +12,7 @@
       <img
         v-else
         class="w-full border-solid border-[1px] border-black"
-        :src="value"
+        :src="result"
       />
       <ul class="mt-[56px]">
         <li class="flex items-center">
@@ -95,15 +91,25 @@ export default Vue.extend({
   name: 'IndexPage',
   components: { MyHeader, MyFooter, ArticleBoard, PrevNext, TheTime, MyButton },
   props: [],
-  data() {
+  data(): {
+    articleInfo: {
+      thumbnailPath: string
+      title: string
+      body: string
+      isDist: boolean
+    }
+    result: string
+    file: Blob | null
+  } {
     return {
       articleInfo: {
-        thumbnailPath: '/a',
+        thumbnailPath: '',
         title: '',
         body: '',
         isDist: false,
       },
-      value: '',
+      result: '',
+      file: null,
     }
   },
   methods: {
@@ -114,7 +120,21 @@ export default Vue.extend({
       }
     },
     async postData() {
-      const res = await this.$axios.$post(
+      const formData = new FormData()
+      if (this.file == null) return
+      formData.append('file', this.file)
+      let config = {
+        headers: {
+          'content-type': 'multipart/form-data',
+        },
+      }
+      let res = await this.$axios.$post(
+        'http://localhost:3000/upload',
+        formData,
+        config
+      )
+      this.articleInfo.thumbnailPath = `localhost:3000/uploads/${res.filename}`
+      res = await this.$axios.$post(
         'http://localhost:3000/api/articles',
         this.articleInfo
       )
@@ -126,44 +146,20 @@ export default Vue.extend({
       }
       return res
     },
-    // https://qiita.com/itoshiki/items/511d58b827f4ce2129fc 参考
     async upload(event: Event) {
       const files = (event.target as HTMLInputElement).files
-      if (files == null) return
-      const file = files[0]
-
-      if (this.checkFile(file)) {
-        const picture = await this.getBase64(file)
-        this.$emit('input', picture)
-        if (typeof picture != 'string') return
-        this.value = picture
+      if (files == undefined) return
+      this.file = files[0]
+      const reader = new FileReader()
+      reader.onload = (e: ProgressEvent) => {
+        const target = e.target as FileReader
+        this.result = target.result as string
       }
-    },
-    getBase64(file: File): Promise<string | ArrayBuffer | null> {
-      return new Promise((resolve, reject) => {
-        const reader = new FileReader()
-        reader.readAsDataURL(file)
-        reader.onload = () => resolve(reader.result)
-        reader.onerror = (error) => reject(error)
-      })
-    },
-    checkFile(file: File) {
-      console.log(`file=${file}`)
-      let result = true
-      const SIZE_LIMIT = 5000000 // 5MB
-      // キャンセルしたら処理中断
-      if (!file) {
-        result = false
+      if (this.file) {
+        // 後で確認
+        reader.readAsDataURL(this.file)
       }
-      // jpeg か png 関連ファイル以外は受付けない
-      if (file.type !== 'image/jpeg' && file.type !== 'image/png') {
-        result = false
-      }
-      // 上限サイズより大きければ受付けない
-      if (file.size > SIZE_LIMIT) {
-        result = false
-      }
-      return result
+      return
     },
   },
 })
