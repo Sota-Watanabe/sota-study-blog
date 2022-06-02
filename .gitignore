@@ -88,3 +88,6 @@ sw.*
 
 # Vim swap files
 *.swp
+
+# upload image
+sota-blog/server/public/*
