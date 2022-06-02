@@ -3,16 +3,18 @@
     <my-header :edit-mode="true" />
     <div class="flex flex-col mt-[78px] mx-[13%] max-w-[1063px] pb-[91px]">
       <label
-        v-if="value == ''"
-        class="w-full h-dammy border-solid border-[1px] border-black text-center line-h-dammy align-center"
+        v-if="result == ''"
+        class="w-full border-solid border-[1px] border-black text-center line-h-dammy align-center"
       >
-        <input ref="file" type="file" class="w-full hidden" @change="upload" />
-        no image
+        <img
+          class="w-full border-solid border-[1px] border-black"
+          :src="articleInfo.thumbnail_path"
+        />
       </label>
       <img
         v-else
         class="w-full border-solid border-[1px] border-black"
-        :src="value"
+        :src="result"
       />
       <ul class="mt-[56px]">
         <li class="flex items-center">
@@ -76,7 +78,6 @@
       </div>
     </div>
     <my-footer />
-    {{ articleInfo }}
   </div>
 </template>
 
@@ -92,15 +93,27 @@ export default Vue.extend({
   name: 'IndexPage',
   components: { MyHeader, MyFooter, ArticleBoard, PrevNext, TheTime, MyButton },
   props: [],
-  data() {
+  data(): {
+    articleInfo: {
+      id: string
+      thumbnail_path: string
+      title: string
+      body: string
+      is_dist: boolean
+    }
+    result: string
+    file: Blob | null
+  } {
     return {
       articleInfo: {
-        thumbnailPath: '',
+        id: '',
+        thumbnail_path: '',
         title: '',
         body: '',
         is_dist: false,
       },
-      value: '',
+      result: '',
+      file: null,
     }
   },
   async created() {
@@ -114,82 +127,70 @@ export default Vue.extend({
       })
     }
     // ここなんとかする 多分type
+    this.articleInfo.id = article.article.id
     this.articleInfo.title = article.article.title
-    this.articleInfo.thumbnailPath = article.article.thumbnail_path
+    this.articleInfo.thumbnail_path = article.article.thumbnail_path
     this.articleInfo.body = article.article.body
     this.articleInfo.is_dist = article.article.is_dist
   },
   methods: {
     submitArticleInfo: function () {
+      console.log('starrt')
       const info = this.articleInfo
       if (info.title != '' && info.body != '') {
-        this.putData()
+        console.log('if')
+        this.postData()
       }
     },
-    async putData() {
-      const ARTICLE_API = `http://localhost:3000/api/articles/${this.$route.params.id}`
-      const res = await this.$axios.$put(ARTICLE_API, {
-        // ここなんとかする 多分type
-        thumbnailPath: this.articleInfo.thumbnailPath,
-        title: this.articleInfo.title,
-        body: this.articleInfo.body,
-        isDist: this.articleInfo.is_dist,
-      })
+    async postData() {
+      const formData = new FormData()
+      if (this.file != null) {
+        formData.append('file', this.file)
+        let config = {
+          headers: {
+            'content-type': 'multipart/form-data',
+          },
+        }
+        // エラー処理
+        const res = await this.$axios.$post(
+          'http://localhost:3000/upload',
+          formData,
+          config
+        )
+        this.articleInfo.thumbnail_path = `http://localhost:3000/uploads/${res.filename}`
+      }
+      console.log(`aa=${JSON.stringify(this.articleInfo)}`)
+      const res = await this.$axios.$put(
+        `http://localhost:3000/api/articles/${this.articleInfo.id}`,
+        this.articleInfo
+      )
       // エラー処理 未確認
       if (res) {
-        this.$router.push(`/articles/${res.article.id}`)
+        this.$router.push(`/articles/${this.articleInfo.id}`)
       } else {
         console.log('error')
       }
-      return res
     },
-    // https://qiita.com/itoshiki/items/511d58b827f4ce2129fc 参考
     async upload(event: Event) {
       const files = (event.target as HTMLInputElement).files
-      if (files == null) return
-      const file = files[0]
-
-      if (this.checkFile(file)) {
-        const picture = await this.getBase64(file)
-        this.$emit('input', picture)
-        if (typeof picture != 'string') return
-        this.value = picture
+      if (files == undefined) return
+      this.file = files[0]
+      const reader = new FileReader()
+      reader.onload = (e: ProgressEvent) => {
+        const target = e.target as FileReader
+        this.result = target.result as string
       }
-    },
-    getBase64(file: File): Promise<string | ArrayBuffer | null> {
-      return new Promise((resolve, reject) => {
-        const reader = new FileReader()
-        reader.readAsDataURL(file)
-        reader.onload = () => resolve(reader.result)
-        reader.onerror = (error) => reject(error)
-      })
-    },
-    checkFile(file: File) {
-      console.log(`file=${file}`)
-      let result = true
-      const SIZE_LIMIT = 5000000 // 5MB
-      // キャンセルしたら処理中断
-      if (!file) {
-        result = false
+      if (this.file) {
+        // 後で確認
+        reader.readAsDataURL(this.file)
       }
-      // jpeg か png 関連ファイル以外は受付けない
-      if (file.type !== 'image/jpeg' && file.type !== 'image/png') {
-        result = false
-      }
-      // 上限サイズより大きければ受付けない
-      if (file.size > SIZE_LIMIT) {
-        result = false
-      }
-      return result
+      return
     },
   },
 })
 </script>
 
 <style scoped>
-.h-dammy {
-  height: 30vw;
-}
 .line-h-dammy {
   line-height: 30vw;
 }

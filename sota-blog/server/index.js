@@ -63,10 +63,10 @@ app.post('/api/articles', async (request, response) => {
 
 app.put('/api/articles/:id', async (request, response) => {
   if (
-    !request.body.thumbnailPath ||
+    !request.body.thumbnail_path ||
     !request.body.title ||
     !request.body.body ||
-    request.body.isDist === undefined
+    request.body.is_dist === undefined
   ) {
     response.status(400).json({ message: 'bad request' })
     return
