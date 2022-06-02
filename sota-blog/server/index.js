@@ -77,10 +77,10 @@ app.put('/api/articles/:id', async (request, response) => {
     return
   }
   const article = await target.update({
-    thumbnail_path: request.body.thumbnailPath,
+    thumbnail_path: request.body.thumbnail_path,
     title: request.body.title,
     body: request.body.body,
-    is_dist: request.body.isDist,
+    is_dist: request.body.is_dist,
   })
   response.status(200).json({ article })
 })
