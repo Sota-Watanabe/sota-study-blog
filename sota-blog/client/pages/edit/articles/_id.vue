@@ -139,10 +139,10 @@ export default Vue.extend({
       const info = this.articleInfo
       if (info.title != '' && info.body != '') {
         console.log('if')
-        this.postData()
+        this.putData()
       }
     },
-    async postData() {
+    async putData() {
       const formData = new FormData()
       if (this.file != null) {
         formData.append('file', this.file)
@@ -159,14 +159,13 @@ export default Vue.extend({
         )
         this.articleInfo.thumbnail_path = `http://localhost:3000/uploads/${res.filename}`
       }
-      console.log(`aa=${JSON.stringify(this.articleInfo)}`)
       const res = await this.$axios.$put(
         `http://localhost:3000/api/articles/${this.articleInfo.id}`,
         this.articleInfo
       )
       // エラー処理 未確認
       if (res) {
-        this.$router.push(`/articles/${this.articleInfo.id}`)
+        this.$router.push(`/edit/`)
       } else {
         console.log('error')
       }
