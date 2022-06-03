@@ -46,11 +46,9 @@ export default Vue.extend({
   },
   computed: {
     displayCards: function (): Array<Article> {
-      console.log(this.articles)
       const cards = this.articles.filter((article) => {
         return article.is_dist === true
       })
-      console.log(`cards=${cards}`)
       return cards
     },
   },

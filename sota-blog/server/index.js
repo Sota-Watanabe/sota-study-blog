@@ -28,10 +28,6 @@ app.use(express.urlencoded({ extended: true }))
 
 // for multer
 app.post('/upload', upload.single('file'), async (req, res) => {
-  console.log('POST /upload')
-  // これで取得可能
-  // http://localhost:3000/public/uploads/7e3d2b670048acddb03cd2edd55236b1
-  console.log(req.file)
   res.status(200).json(req.file)
 })
 

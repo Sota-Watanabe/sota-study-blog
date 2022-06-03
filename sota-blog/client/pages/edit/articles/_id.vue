@@ -117,7 +117,6 @@ export default Vue.extend({
     }
   },
   async created() {
-    console.log('start create')
     const ARTICLE_API = `http://localhost:3000/api/articles/${this.$route.params.id}`
     const article = await this.$axios.$get(ARTICLE_API)
     if (!article.article) {
@@ -135,10 +134,8 @@ export default Vue.extend({
   },
   methods: {
     submitArticleInfo: function () {
-      console.log('starrt')
       const info = this.articleInfo
       if (info.title != '' && info.body != '') {
-        console.log('if')
         this.putData()
       }
     },

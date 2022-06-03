@@ -62,7 +62,6 @@ export default Vue.extend({
         statusCode: 404,
       })
     }
-    console.log(article)
     this.articleInfo.title = article.article.title
     this.articleInfo.thumbnail_path = article.article.thumbnail_path
     this.articleInfo.body = article.article.body
