@@ -1,3 +1,12 @@
+### 依存関係
+yarn:
+	cd local-db;\
+	yarn && \
+	cd ../blog; \
+	yarn && \
+	cd database; \
+	yarn
+
 ARG = create-article
 ### DB環境
 db/cf:
