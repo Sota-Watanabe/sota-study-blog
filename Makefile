@@ -18,6 +18,13 @@ dc/ls: ## DBコンテナの状態を確認
 	docker compose ls
 
 ARG = create-article
+### DB環境
+db/cf:
+	cd local-db;\
+	yarn cf ${ARG}
+db/up:
+	cd local-db;\
+	yarn up
 ### DB操作
 db/mg: ## マイグレーションする (DBに設定を反映)
 	cd sota-blog/database;\
