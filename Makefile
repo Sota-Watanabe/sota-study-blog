@@ -1,11 +1,3 @@
-### VM
-lima/ls: ## limaVMの起動状態確認
-	limactl ls
-lima/start: ## dockerという名前のVM起動
-	limactl start docker
-lima/stop: ## dockerという名前のVM停止
-	limactl stop docker
-
 ### DB用コンテナ
 dc/up: ## DBコンテナ群(今回は1つ)を起動
 	cd local-db;\
