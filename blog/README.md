@@ -1,4 +1,4 @@
-# sota-blog
+# blog
 
 ## Build Setup
 

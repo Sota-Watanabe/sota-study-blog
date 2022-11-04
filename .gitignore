@@ -90,4 +90,4 @@ sw.*
 *.swp
 
 # upload image
-!sota-blog/server/public/.gitkeep
+!blog/server/public/.gitkeep
